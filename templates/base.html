@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html ng-app="crudjangongular_app">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1, IE=Edge"/>
+    <meta name="robots" content="noindex, nofollow"/>
+    <meta name="googlebot" content="noindex, nofollow"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1">
+    <meta name="msapplication-config" content="none"/>
+    <title>
+        CRUDJANGONGULAR
+    </title>
+    <script>
+        if(!window.CSRF_TOKEN){
+            window.CSRF_TOKEN = '{{ csrf_token }}';
+        }
+    </script>
+    <script src='/static/jquery.js'></script>
+    <script src='/static/angular.js'></script>
+    <script src='/static/angular-resource.min.js'></script>
+    <script src='/static/fajax.js'></script>
+    <script src='/static/crud.js'></script>
+    <script src='/static/table.js'></script>
+    <script src='/static/crudjangongular.js'></script>
+    {% block head %}
+    {% endblock %}
+</head>
+
+{% block body %}
+    <body>
+        <div id="m2-content">
+            <main>
+                {% block content %}{% endblock content %}
+            </main>
+        </div>
+    </body>
+{% endblock body %}
+</html>

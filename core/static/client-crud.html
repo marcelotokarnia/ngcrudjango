@@ -1,0 +1,39 @@
+<div>
+    <div ng-show="m.loading_clients">... loading ...</div>
+    <button ng-click="m.mostrar_form = true;">Adicionar novo</button>
+    <div ng-show="m.mostrar_form">
+        <div>
+            Nome: <input type="text" name='name' ng-model="m.new_client.name" maxlength="250"/>
+        </div>
+        <div>
+            Email: <input type="email" name='email' ng-model="m.new_client.email"/>
+        </div>
+        <div>
+            Phone: <input type="text" name='phone' ng-model="m.new_client.phone" maxlength="15"/>
+        </div>
+        <button type='submit' ng-disabled="m.criando_client" ng-click="m.criar_novo_usuario()">Criar</button>
+        <button type='button' ng-disabled="m.criando_client" ng-click="m.reset_novo_usuario()">Cancelar</button>
+    </div>
+    <ul style="width: 400px">
+        <li ng-repeat="client in m.clients">
+            <div ng-hide="client.is_editing">
+                {[{client.pk + ':' + client.name}]}
+                <a href ng-click="m.deletar_usuario(client)" style="float:right">Excluir</a>
+                <a href ng-click="m.comecar_edicao(client)" style="float:right">Editar</a>
+            </div>
+            <div ng-show="client.is_editing">
+                <div>
+                    Nome: <input type="text" name='name' ng-model="client._name" maxlength="250"/>
+                </div>
+                <div>
+                    Email: <input type="email" name='email' ng-model="client._email"/>
+                </div>
+                <div>
+                    Phone: <input type="text" name='phone' ng-model="client._phone" maxlength="15"/>
+                </div>
+                <button type='submit' ng-disabled="client.salvando_edicao" ng-click="m.editar_usuario(client)">Salvar</button>
+                <button type='button' ng-disabled="client.salvando_edicao" ng-click="m.cancelar_edicao(client)">Cancelar</button>
+            </div>
+        </li>
+    </ul>
+</div>
